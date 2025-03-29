@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>My Personal Page</title>
+  <style>
+    body { font-family: sans-serif; margin: 2em; background: #f5f5f5; }
+    .card { background: white; padding: 1.5em; border-radius: 12px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); }
+    h1 { font-size: 1.5em; }
+    ul { list-style: none; padding-left: 0; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1 id="name">Loading...</h1>
+    <p><strong>職業：</strong><span id="job"></span></p>
+    <p><strong>性格：</strong><ul id="traits"></ul></p>
+    <p><strong>価値観：</strong><ul id="values"></ul></p>
+    <p><strong>目標：</strong><span id="goal"></span></p>
+  </div>
+
+  <script>
+    const url = "https://raw.githubusercontent.com/komu77/mcp-user-context/main/context/user-profile.json";
+    fetch(url)
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById("name").textContent = data.name || "No Name";
+        document.getElementById("job").textContent = data.occupation || "不明";
+
+        const traits = data.personality_traits || [];
+        const traitsList = document.getElementById("traits");
+        traits.forEach(t => {
+          const li = document.createElement("li");
+          li.textContent = t;
+          traitsList.appendChild(li);
+        });
+
+        const values = data.values || [];
+        const valuesList = document.getElementById("values");
+        values.forEach(v => {
+          const li = document.createElement("li");
+          li.textContent = v;
+          valuesList.appendChild(li);
+        });
+
+        document.getElementById("goal").textContent = data.desired_state?.goal || "なし";
+      });
+  </script>
+</body>
+</html>
