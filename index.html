@@ -2,145 +2,388 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>My Personal Page</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
   <style>
+    :root {
+      --primary-color: #3498db;
+      --secondary-color: #2c3e50;
+      --accent-color: #e74c3c;
+      --light-bg: #f9fbfc;
+      --dark-bg: #34495e;
+      --text-color: #333;
+      --light-text: #666;
+      --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+    
     body {
-      font-family: "Hiragino Kaku Gothic ProN", "Segoe UI", sans-serif;
-      background: #f0f4f8;
+      font-family: "Hiragino Kaku Gothic ProN", "游ゴシック", "YuGothic", "メイリオ", sans-serif;
+      background: linear-gradient(135deg, #f5f7fa 0%, #e4efe9 100%);
       margin: 0;
-      padding: 2em;
-      color: #333;
+      padding: 0;
+      color: var(--text-color);
+      line-height: 1.6;
     }
-
-    .card {
-      background: #ffffff;
-      padding: 2em;
-      border-radius: 20px;
-      max-width: 700px;
-      margin: auto;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
     }
-
-    .section {
-      background: #f9fbfc;
-      padding: 1em;
-      margin-bottom: 1.5em;
-      border-left: 5px solid #a3c3dc;
-      border-radius: 10px;
-    }
-
-    h1 {
-      font-size: 1.8em;
-      color: #2c3e50;
-      margin-bottom: 0.5em;
-    }
-
-    p strong {
-      color: #555;
-    }
-
-    ul {
-      list-style-type: disc;
-      padding-left: 1.5em;
-      margin-top: 0.3em;
-      margin-bottom: 1em;
-    }
-
-    span, li {
-      font-size: 1.1em;
-    }
-
-    .header {
-      background: linear-gradient(to right, #dbe9f4, #f0f4f8);
-      padding: 1em 2em;
-      border-radius: 12px;
-      margin-bottom: 2em;
+    
+    .hero {
+      position: relative;
+      height: 400px;
+      background: linear-gradient(rgba(44, 62, 80, 0.7), rgba(44, 62, 80, 0.7)), url('/api/placeholder/1200/400') no-repeat center center;
+      background-size: cover;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
       text-align: center;
+      padding: 0 20px;
+      margin-bottom: 40px;
+      border-radius: 0 0 50% 50% / 20px;
+      overflow: hidden;
     }
-
-    .header h1 {
+    
+    .hero-content {
+      z-index: 2;
+      max-width: 800px;
+    }
+    
+    .hero h1 {
+      font-size: 3.5em;
       margin: 0;
-      font-size: 2em;
-      color: #34495e;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      font-weight: 700;
     }
-
-    .header p {
-      margin: 0.3em;
-      color: #666;
+    
+    .hero p {
+      font-size: 1.5em;
+      margin: 20px 0;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
     }
-
-    .message {
+    
+    .motto {
       font-style: italic;
-      color: #888;
-      text-align: center;
-      margin-bottom: 2em;
-      font-size: 1em;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 10px 20px;
+      border-radius: 50px;
+      display: inline-block;
+      margin-top: 20px;
     }
-
-    @media screen and (max-width: 600px) {
-      .card {
-        padding: 1.2em;
+    
+    .profile-card {
+      background: white;
+      border-radius: 20px;
+      box-shadow: var(--card-shadow);
+      overflow: hidden;
+      margin-bottom: 40px;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .profile-header {
+      display: flex;
+      align-items: center;
+      padding: 30px;
+      background: var(--light-bg);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    }
+    
+    .avatar {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid white;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      margin-right: 30px;
+    }
+    
+    .profile-name {
+      flex: 1;
+    }
+    
+    .profile-name h2 {
+      font-size: 2.5em;
+      margin: 0 0 10px 0;
+      color: var(--secondary-color);
+    }
+    
+    .profile-name p {
+      margin: 5px 0;
+      color: var(--light-text);
+      font-size: 1.2em;
+      display: flex;
+      align-items: center;
+    }
+    
+    .profile-name i {
+      margin-right: 10px;
+      color: var(--primary-color);
+    }
+    
+    .profile-content {
+      padding: 30px;
+    }
+    
+    .section {
+      margin-bottom: 30px;
+      position: relative;
+      background: var(--light-bg);
+      padding: 25px;
+      border-radius: 15px;
+      border-left: 5px solid var(--primary-color);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .section:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    }
+    
+    .section h3 {
+      margin-top: 0;
+      color: var(--secondary-color);
+      font-size: 1.5em;
+      border-bottom: 2px solid rgba(52, 152, 219, 0.2);
+      padding-bottom: 10px;
+      display: flex;
+      align-items: center;
+    }
+    
+    .section h3 i {
+      margin-right: 10px;
+      color: var(--primary-color);
+    }
+    
+    ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
+    
+    li {
+      font-size: 1.1em;
+      margin-bottom: 10px;
+      padding-left: 20px;
+      position: relative;
+    }
+    
+    li:before {
+      content: "•";
+      color: var(--primary-color);
+      position: absolute;
+      left: 0;
+      font-weight: bold;
+    }
+    
+    .goal-section {
+      background: linear-gradient(135deg, #3498db 0%, #2c3e50 100%);
+      color: white;
+      border-radius: 15px;
+      padding: 30px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      border-left: none;
+    }
+    
+    .goal-section h3 {
+      color: white;
+      border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .goal-section:before {
+      content: "";
+      position: absolute;
+      top: -50px;
+      right: -50px;
+      width: 100px;
+      height: 100px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+    }
+    
+    .goal-section span {
+      font-size: 1.3em;
+      display: block;
+      margin-top: 20px;
+    }
+    
+    .footer {
+      text-align: center;
+      padding: 20px;
+      color: var(--light-text);
+      font-size: 0.9em;
+      margin-top: 40px;
+    }
+    
+    /* アニメーション */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .animated {
+      animation: fadeIn 0.8s ease forwards;
+      opacity: 0;
+    }
+    
+    .delay-1 { animation-delay: 0.2s; }
+    .delay-2 { animation-delay: 0.4s; }
+    .delay-3 { animation-delay: 0.6s; }
+    .delay-4 { animation-delay: 0.8s; }
+    
+    /* レスポンシブデザイン */
+    @media screen and (max-width: 768px) {
+      .hero {
+        height: 300px;
+        border-radius: 0 0 25% 25% / 15px;
+      }
+      
+      .hero h1 {
+        font-size: 2.5em;
+      }
+      
+      .hero p {
+        font-size: 1.2em;
+      }
+      
+      .profile-header {
+        flex-direction: column;
+        text-align: center;
+      }
+      
+      .avatar {
+        margin: 0 auto 20px;
+      }
+      
+      .profile-name {
+        text-align: center;
+      }
+      
+      .profile-name p {
+        justify-content: center;
+      }
+    }
+    
+    @media screen and (max-width: 480px) {
+      .hero h1 {
+        font-size: 2em;
+      }
+      
+      .container {
+        padding: 10px;
+      }
+      
+      .section, .profile-content, .profile-header {
+        padding: 15px;
       }
     }
   </style>
 </head>
 <body>
-  <div class="card">
-    <div class="header">
+  <div class="hero">
+    <div class="hero-content">
       <h1>My Personal Page</h1>
       <p>内向性 × 慎重さ × 共感力 を力に変える</p>
-    </div>
-
-    <div class="message">
-      “ありのままで生きる”を大切に。
-    </div>
-
-    <h1 id="name">Loading...</h1>
-
-    <div class="section">
-      <p><strong>職業：</strong><span id="job"></span></p>
-    </div>
-
-    <div class="section">
-      <p><strong>性格：</strong></p>
-      <ul id="traits"></ul>
-    </div>
-
-    <div class="section">
-      <p><strong>価値観：</strong></p>
-      <ul id="values"></ul>
-    </div>
-
-    <div class="section">
-      <p><strong>目標：</strong><span id="goal"></span></p>
+      <div class="motto">"ありのままで生きる"を大切に。</div>
     </div>
   </div>
-
+  
+  <div class="container">
+    <div class="profile-card animated delay-1">
+      <div class="profile-header">
+        <img src="/api/placeholder/120/120" alt="プロフィール画像" class="avatar">
+        <div class="profile-name">
+          <h2 id="name">Loading...</h2>
+          <p><i class="fas fa-briefcase"></i> <span id="job">読み込み中...</span></p>
+        </div>
+      </div>
+      
+      <div class="profile-content">
+        <div class="section animated delay-2">
+          <h3><i class="fas fa-user"></i> 性格</h3>
+          <ul id="traits">
+            <li>読み込み中...</li>
+          </ul>
+        </div>
+        
+        <div class="section animated delay-3">
+          <h3><i class="fas fa-heart"></i> 価値観</h3>
+          <ul id="values">
+            <li>読み込み中...</li>
+          </ul>
+        </div>
+        
+        <div class="goal-section section animated delay-4">
+          <h3><i class="fas fa-flag"></i> 目標</h3>
+          <span id="goal">読み込み中...</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer">
+      &copy; 2025 My Personal Page - すべての権利を保有
+    </div>
+  </div>
+  
   <script>
     const url = "https://raw.githubusercontent.com/komu77/mcp-user-context/main/context/user-profile.json";
+    
+    // データ読み込み時のアニメーション
+    function animateElements() {
+      const animatedElements = document.querySelectorAll('.animated');
+      animatedElements.forEach(el => {
+        el.style.opacity = '1';
+      });
+    }
+    
+    // データ読み込みと表示
     fetch(url)
       .then(res => res.json())
       .then(data => {
-        document.getElementById("name").textContent = data.name || "No Name";
-        document.getElementById("job").textContent = data.occupation || "不明";
-
-        const traits = data.personality_traits || [];
+        // プロフィール情報を設定
+        document.getElementById("name").textContent = data.name || "名前なし";
+        document.getElementById("job").textContent = data.occupation || "職業不明";
+        
+        // 性格特性リストをクリアして設定
         const traitsList = document.getElementById("traits");
+        traitsList.innerHTML = "";
+        const traits = data.personality_traits || [];
         traits.forEach(t => {
           const li = document.createElement("li");
           li.textContent = t;
           traitsList.appendChild(li);
         });
-
-        const values = data.values || [];
+        
+        // 価値観リストをクリアして設定
         const valuesList = document.getElementById("values");
+        valuesList.innerHTML = "";
+        const values = data.values || [];
         values.forEach(v => {
           const li = document.createElement("li");
           li.textContent = v;
           valuesList.appendChild(li);
         });
-
-        document.getElementById("goal").textContent = data.desired_state?.goal || "なし";
+        
+        // 目標を設定
+        document.getElementById("goal").textContent = data.desired_state?.goal || "設定された目標はありません";
+        
+        // アニメーションを開始
+        setTimeout(animateElements, 100);
+      })
+      .catch(error => {
+        console.error("データの取得に失敗しました:", error);
+        document.getElementById("name").textContent = "データ読み込みエラー";
+        document.getElementById("traits").innerHTML = "<li>データを取得できませんでした</li>";
+        document.getElementById("values").innerHTML = "<li>データを取得できませんでした</li>";
+        document.getElementById("goal").textContent = "データを取得できませんでした";
       });
   </script>
 </body>
